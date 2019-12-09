@@ -35,7 +35,9 @@
         "asar": true,
         "protocols": {
             "name": "electron_class_1_name",
-            "schemes": ["electron_class_1_schemes"]
+            "schemes": [
+                "electron_class_1_schemes"
+            ]
         },
         "mac": {
             "target": [
