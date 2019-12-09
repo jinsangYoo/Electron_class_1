@@ -1,0 +1,77 @@
+{
+    "name": "electron_class_1",
+    "version": "1.0.0",
+    "description": "* 일렉트론 연습 repository 입니다.",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "clean": "rm -rf dist",
+        "build": "npm run build:linux && npm run build:osx && npm run build:win",
+        "build:osx": "electron-builder --mac",
+        "build:linux": "npm run build:linux32 && npm run build:linux64",
+        "build:linux32": "electron-builder --linux --ia32",
+        "build:linux64": "electron-builder --linux --x64",
+        "build:win": "npm run build:win32 && npm run build:win64",
+        "build:win32": "electron-builder --win --ia32",
+        "build:win64": "electron-builder --win --x64"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com-jinsangYoo:jinsangYoo/Electron_class_1.git"
+    },
+    "author": {
+        "name": "jinsang",
+        "email": "milkybboy@gmail.com"
+    },
+    "homepage": "https://github.com/jinsangYoo/Electron_class_1",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^7.1.3",
+        "electron-builder": "^21.2.0"
+    },
+    "build": {
+        "productName": "electron_class_1_productName",
+        "appId": "com.electron.electron_class_1",
+        "asar": true,
+        "protocols": {
+            "name": "electron_class_1_name",
+            "schemes": ["electron_class_1_schemes"]
+        },
+        "mac": {
+            "target": [
+                "default"
+            ],
+            "icon": "./resources/installer/Icon.icns"
+        },
+        "dmg": {
+            "title": "electron_class_1_title",
+            "icon": "./resources/installer/Icon.icns"
+        },
+        "win": {
+            "target": [
+                "zip",
+                "nsis"
+            ],
+            "icon": "./resources/installer/Icon.ico"
+        },
+        "linux": {
+            "target": [
+                "AppImage",
+                "deb",
+                "rpm",
+                "zip",
+                "tar.gz"
+            ],
+            "icon": "./resources/linuxicon"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "directories": {
+            "buildResources": "resources/installer/",
+            "output": "dist/",
+            "app": "."
+        }
+    }
+}
