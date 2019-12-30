@@ -1,13 +1,20 @@
 'use strict';
 
-const {
-  app,
-  BrowserWindow
-} = require('electron');
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+
+let mainWindow = null;
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
 
 function createWindow() {
   // 브라우저 창을 생성합니다.
-  let win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -16,7 +23,10 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  win.loadFile('index.html');
+  mainWindow.loadFile('index.html');
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 }
 
 app.on('ready', createWindow);
